@@ -1,6 +1,7 @@
 package dev.ahmedmourad.buggy.compiler
 
-import org.jetbrains.kotlin.descriptors.*
+import org.jetbrains.kotlin.descriptors.ClassDescriptor
+import org.jetbrains.kotlin.descriptors.SimpleFunctionDescriptor
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.jetbrains.kotlin.resolve.extensions.SyntheticResolveExtension
@@ -14,6 +15,5 @@ class BuggySyntheticResolveExtension : SyntheticResolveExtension {
             result: MutableCollection<SimpleFunctionDescriptor>
     ) {
         thisDescriptor.constructors // This crashes when PhoneNumber is annotated with @Serializable
-        error("ظظ؟")
     }
 }
