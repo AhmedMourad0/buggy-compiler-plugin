@@ -1,0 +1,15 @@
+rootProject.name = "buggy-compiler-plugin"
+
+include "sample"
+
+includeBuild("gradle-plugin") {
+    dependencySubstitution {
+        substitute module("dev.ahmedmourad.buggy:buggy-gradle-plugin") with project(":")
+    }
+}
+
+includeBuild("compiler-plugin") {
+    dependencySubstitution {
+        substitute module("dev.ahmedmourad.buggy:buggy-compiler-plugin") with project(":")
+    }
+}

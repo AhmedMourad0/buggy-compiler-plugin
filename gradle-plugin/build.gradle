@@ -1,0 +1,41 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+    }
+}
+
+apply plugin: "java-gradle-plugin"
+apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "org.jetbrains.kotlin.kapt"
+
+repositories {
+    jcenter()
+}
+
+gradlePlugin {
+    plugins {
+        noCopyPlugin {
+            id = "dev.ahmedmourad.buggy.buggy-gradle-plugin"
+            implementationClass = "dev.ahmedmourad.buggy.gradle.BuggyGradlePlugin"
+        }
+    }
+}
+
+tasks.withType(KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.3.72"
+    compileOnly "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+}
